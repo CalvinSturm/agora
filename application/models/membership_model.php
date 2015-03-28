@@ -19,6 +19,9 @@ class Membership_model extends CI_Model {
             'lname' => $this->input->post('lname'),
             'email' => $this->input->post('email'),
             'username' => $this->input->post('username'),
+            'skillwanted' => $this->input->post('skillwanted'),
+            'skilloffered' => $this->input->post('skilloffered'),
+            'zipcode' => $this->input->post('zipcode'),
             'password' => $this->input->post('password')
             );
         

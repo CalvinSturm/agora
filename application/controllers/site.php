@@ -3,8 +3,9 @@
 class Site extends CI_Controller { 
     //suppose to load members area after logging in
     function members_area() {
-        
-        $this->load->view('members_area');
+        $data['main_content'] = 'members_area';
+        $this->load->view('includes/template', $data);
+    
     }
     
     function is_logged_in() {
@@ -15,6 +16,13 @@ class Site extends CI_Controller {
             
         }
     }
-    
+    //Need to get accessing the DB out of the view , might need to make another model
+    function getListing() {
+        $query = $this->db->query("SELECT * From members;");
+        return $query;
+
+      
+
+    }
 }
 ?>  

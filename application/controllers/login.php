@@ -12,16 +12,21 @@ class Login extends CI_Controller {
         $this->load->model('membership_model');
         $query = $this->membership_model->validate();
         
+        //custom session array accessed globally with $this->session->userdata('arrayKey');
+        //whenever a user logs in, their data is retrieved from out DB and saved into their cookies        
         if($query) {
             
             $data = array(
                 'username' => $this->input->post('username'),
+                'skillOffered' => $this->input->post('skillOffered'),
+                'skillWanted' => $this->input->post('skillWanted'),   
+                'zipcode' => $this->input->post('zipcode'),
                 'is_logged_in' => true
             );
             
             $this->session->set_userdata($data);
-            $this->load->view('members_area');
-            //redirect('site/members_area');
+            $data['main_content'] = 'members_area';
+            $this->load->view('includes/template', $data);          
         }
         
         else {
@@ -39,10 +44,8 @@ class Login extends CI_Controller {
     //rules for creating a member checks, validates and submits
     function create_member() {
         
-        //$this->load->library('form_validation');
-        
-        $this->form_validation->set_rules('fname', 'Name', 'trimrequired');
-        $this->form_validation->set_rules('lname', 'Last Name', 'trimrequired');
+        //$this->form_validation->set_rules('fname', 'Name', 'trimrequired');
+       // $this->form_validation->set_rules('lname', 'Last Name', 'trimrequired');
         $this->form_validation->set_rules('email', 'Email Address', 'trimrequired|vaild_email');
         $this->form_validation->set_rules('username', 'Username', 'trimrequired|min_length[5]');
         $this->form_validation->set_rules('password', 'Password', 'trimrequired|min_length[5]|max_length[32]');

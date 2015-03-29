@@ -12,21 +12,25 @@ class Membership_model extends CI_Model {
         }                         
         
     }   
-    //creates a new member in the data base..we can add more fields
+    //creates a new member in the data base.fields reduced/changed
     function create_member() {
         $new_member_insert_data = array(
-            'fname' => $this->input->post('fname'),
-            'lname' => $this->input->post('lname'),
+            //'fname' => $this->input->post('fname'),
+            //'lname' => $this->input->post('lname'),
             'email' => $this->input->post('email'),
             'username' => $this->input->post('username'),
-            'skillwanted' => $this->input->post('skillwanted'),
-            'skilloffered' => $this->input->post('skilloffered'),
+            'skillwanted' => $this->input->post('skillWanted'),
+            'skilloffered' => $this->input->post('skillOffered'),
             'zipcode' => $this->input->post('zipcode'),
             'password' => $this->input->post('password')
             );
         
     $insert = $this->db->insert('members', $new_member_insert_data);
     return $insert;
+    }
+    
+    function getListingInfo() {
+        
     }
 }
 ?>

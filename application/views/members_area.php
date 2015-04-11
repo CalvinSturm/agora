@@ -9,8 +9,9 @@ echo "Here is a listing of People we have in our system:<br>";
 //$skillWanted = $this->session->userdata('skillWanted');
 //
 //Here is an example of how we can retreive and use user's cookie data
-$thisUser = $this->session->userdata('username');
-foreach ($query->result_array() as $row)
+
+/*$thisUser = $this->session->userdata('username');
+ foreach ($query->result_array() as $row)
 {
    
     if($thisUser != $row['username']) {
@@ -23,6 +24,11 @@ foreach ($query->result_array() as $row)
         echo "<br>";
     
     }
+} */
+
+//New way pulling from site Controller
+foreach($matches->result() as $match) {
+    echo $match->username;
 }
 
 ?>

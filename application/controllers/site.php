@@ -34,5 +34,6 @@ class Site extends CI_Controller {
         $data['matches'] = $this->db->query($query);
         
         $this->load->view('matches_area', $data);
+    }
 }
 ?>  

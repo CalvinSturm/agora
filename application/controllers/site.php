@@ -33,7 +33,7 @@ class Site extends CI_Controller {
         $query = "SELECT username FROM members WHERE skillWanted=" . $wanted . " AND skillNeeded= " . $needed;
         $data['matches'] = $this->db->query($query);
         
-        $this->load->view('matches_area', $data);
+        $this->load->view('members_area', $data);
     }
 }
 ?>  

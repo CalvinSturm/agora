@@ -15,25 +15,19 @@ class Site extends CI_Controller {
             echo 'no permission for you';
             
         }
-    }
-    //Need to get accessing the DB out of the view , might need to make another model
-   /* function getListing() {
-        $query = $this->db->query("SELECT * From members;");
-        return $query;
-
-      
-
-    } */
-    
-    //Check variable names with database
-    function queries() {
-        $wanted = $this->session->members('skillWanted');
-        $offered = $this->session->members('skillOffered');
         
-        $query = "SELECT username FROM members WHERE skillWanted=" . $wanted . " AND skillNeeded= " . $needed;
-        $data['matches'] = $this->db->query($query);
+    }
+
+    //Check variable names with database
+    function myQuery() {
+        $wanted = $this->session->userdata('skillWanted');
+        $offered = $this->session->userdata('skillOffered');
+        
+        $query = "SELECT username FROM members WHERE skillWanted = ? AND skillOffered = ? ";
+        $data['matches'] = $this->db->query($query, array($wanted, $offered));
         
         $this->load->view('members_area', $data);
+        
     }
 }
 ?>  

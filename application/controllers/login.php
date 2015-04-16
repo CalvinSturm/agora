@@ -25,8 +25,9 @@ class Login extends CI_Controller {
             );
             
             $this->session->set_userdata($data);
-            $data['main_content'] = 'members_area';
-            $this->load->view('includes/template', $data);          
+            redirect('site/myQuery');
+            //$data['main_content'] = 'members_area';
+            //$this->load->view('includes/template', $data);          
         }
         
         else {

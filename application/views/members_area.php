@@ -28,7 +28,7 @@ echo "Here is a listing of People we have in our system:<br>";
 
 //New way pulling from site Controller
 foreach($matches->result() as $match) {
-    echo $match->username;
+    echo $match->username . '<br>';
 }
 
 ?>

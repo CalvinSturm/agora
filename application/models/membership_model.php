@@ -3,13 +3,23 @@ class Membership_model extends CI_Model {
     //validates username and password
     function validate() {
         $this->db->where('username', $this->input->post('username'));
+        
+        // do the hash guys. DO IT. 
         $this->db->where('password', $this->input->post('password'));//md5($this->input->post('password')));
         $query = $this->db->get('members');
         
-        if($query->num_rows == 1) {
-            return true;     
+        
+        if($query->num_rows() == 1) {
+        
+        	// You have to call the method to return the result of the query
+            return $query->result_array(); 
             
-        }                         
+            // return $query     
+            
+        }    else {
+            
+            return false;
+        }
         
     }   
     //creates a new member in the data base.fields reduced/changed

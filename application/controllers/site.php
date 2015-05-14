@@ -10,7 +10,7 @@ class Site extends CI_Controller {
     
     function is_logged_in() {
         $is_logged_in = $this->session->userdata('is_logged_in');
-        
+
         if(!isset($is_logged_in) || $is_logged_in != true) {
             echo 'no permission for you';
             
@@ -20,13 +20,26 @@ class Site extends CI_Controller {
 
     //Check variable names with database
     function myQuery() {
-        $wanted = $this->session->userdata('skillWanted');
-        $offered = $this->session->userdata('skillOffered');
         
-        $query = "SELECT username FROM members WHERE skillWanted = ? AND skillOffered = ? ";
-        $data['matches'] = $this->db->query($query, array($wanted, $offered));
+        //$offered = $this->session->userdata('skillOffered');
+        //$wanted = $this->session->userdata('skillWanted');
+        $array = $this->session->all_userdata();
+        print_r($array);
+        $offered = $array['skillOffered'];
+        $wanted = $array['skillWanted'];
+        echo $offered;
+        echo $wanted;
         
+        //$thisUser = $this->session->userdata('username');
+        // $zipcode = $this->session->userdata('zipcode');
+        
+        $query = "SELECT * FROM members WHERE skillWanted = ? AND skillOffered = ?";
+        $data['matches'] = $this->db->query($query, array($offered, $wanted));
+
+
+        //$this->load->view('includes/header');
         $this->load->view('members_area', $data);
+        $this->load->view('includes/footer');
         
     }
 }

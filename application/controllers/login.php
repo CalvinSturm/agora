@@ -7,6 +7,7 @@ class Login extends CI_Controller {
         $this->load->view('includes/template', $data);
         
     }
+    
     //checks if the user is logged in
     function validate_credentials() {
         $this->load->model('membership_model');
@@ -15,12 +16,13 @@ class Login extends CI_Controller {
         //custom session array accessed globally with $this->session->userdata('arrayKey');
         //whenever a user logs in, their data is retrieved from out DB and saved into their cookies        
         if($query) {
+        
             
             $data = array(
-                'username' => $this->input->post('username'),
-                'skillOffered' => $this->input->post('skillOffered'),
-                'skillWanted' => $this->input->post('skillWanted'),   
-                'zipcode' => $this->input->post('zipcode'),
+                'username' => $query[0]['username'],
+                'skillOffered' => $query[0]['skillOffered'],
+                'skillWanted' => $query[0]['skillWanted'],   
+                'zipcode' => $query[0]['zipcode'],
                 'is_logged_in' => true
             );
             

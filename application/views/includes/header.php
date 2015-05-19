@@ -2,12 +2,12 @@
 <html>
 	<head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	    <link rel="stylesheet" type="text/css" href="../../../css/login.css"/>
+	    <link rel="stylesheet" type="text/css" href="C:\wamp\www\agoraci\css\login.css"/>
 	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 	    
 	</head>
-	<body>
+	<body><!--
 		<nav class="navbar navbar-default navbar-fixed-top" role="banner">
 		  <div class="container">
 		    <div class="navbar-header">
@@ -38,4 +38,4 @@
 		  </div>
 		</nav>
         <br>
-        <br>
+        <br> -->

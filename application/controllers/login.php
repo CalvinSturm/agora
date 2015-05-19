@@ -1,4 +1,4 @@
-<?php
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Login extends CI_Controller {
     //loads the template & login data is saved as main_content
@@ -17,7 +17,7 @@ class Login extends CI_Controller {
         //whenever a user logs in, their data is retrieved from out DB and saved into their cookies        
         if($query) {
         
-            
+            print_r($query);
             $data = array(
                 'username' => $query[0]['username'],
                 'skillOffered' => $query[0]['skillOffered'],
@@ -27,19 +27,15 @@ class Login extends CI_Controller {
             );
             
             $this->session->set_userdata($data);
-            redirect('site/myQuery');
-            //$data['main_content'] = 'members_area';
-            //$this->load->view('includes/template', $data);          
+            redirect('site/myQuery');          
         }
         
         else {
             $this->index();
         }
-        
     }
     
     function signup() {
-    
         $data['main_content'] = 'signup_form';
         $this->load->view('includes/template', $data);
     }
@@ -47,8 +43,6 @@ class Login extends CI_Controller {
     //rules for creating a member checks, validates and submits
     function create_member() {
         
-        //$this->form_validation->set_rules('fname', 'Name', 'trimrequired');
-       // $this->form_validation->set_rules('lname', 'Last Name', 'trimrequired');
         $this->form_validation->set_rules('email', 'Email Address', 'trimrequired|vaild_email');
         $this->form_validation->set_rules('username', 'Username', 'trimrequired|min_length[5]');
         $this->form_validation->set_rules('password', 'Password', 'trimrequired|min_length[5]|max_length[32]');

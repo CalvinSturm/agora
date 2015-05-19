@@ -3,12 +3,21 @@
     border 1px solid white;
     margin: 250px auto 0;
     padding 1em;
-    
+  
+}
+
+#signup_form {
+    width: 300px;
+    border 1px solid white;
+    margin: 250px auto 0;
+    padding 1em;
     
 }
+
 .box {
     margin-bottom: 20px;
     padding: 30px 15px;
     background: #fff;
     background: rgba(255,255,255,0.9);
 }
+

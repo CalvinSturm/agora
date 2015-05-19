@@ -17,6 +17,10 @@ class Site extends CI_Controller {
 
     //Check variable names with database
     function myQuery() {
+        if(!$this->session->userdata('is_logged_in')) {
+            redirect('login', 'refresh');
+            
+        }
 
         $array = $this->session->all_userdata();
         

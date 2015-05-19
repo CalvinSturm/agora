@@ -3,6 +3,10 @@
 class Login extends CI_Controller {
     //loads the template & login data is saved as main_content
     function index() {
+        if($this->session->userdata('is_logged_in')) {
+            redirect('site/myQuery', 'refresh');
+            
+        }
         $data['main_content'] = 'login_form';
         $this->load->view('includes/template', $data);
         
@@ -65,6 +69,13 @@ class Login extends CI_Controller {
             }
         }      
     }
+    
+    function sign_out() {
+        $this->session->sess_destroy();
+        redirect('login', 'refresh');
+    }
+    
+    
 }
 
 

@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" <?php echo link_tag("css\members.css");?>>
 <?php 
 
 echo "<br>You are logged in and are in the members area!!" . "<br> <br>";

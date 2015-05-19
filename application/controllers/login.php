@@ -6,7 +6,7 @@ class Login extends CI_Controller {
         if($this->session->userdata('is_logged_in')) {
             redirect('site/myQuery', 'refresh');
             
-        }
+        } 
         $data['main_content'] = 'login_form';
         $this->load->view('includes/template', $data);
         
@@ -31,7 +31,14 @@ class Login extends CI_Controller {
             );
             
             $this->session->set_userdata($data);
-            redirect('site/myQuery');          
+            if($query[0]['username'] === 'admin') {
+                redirect('admin');
+
+            } 
+            else {
+                redirect('site/myQuery');
+            }
+                      
         }
         
         else {

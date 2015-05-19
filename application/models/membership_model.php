@@ -3,7 +3,7 @@
 class Membership_model extends CI_Model { 
     //validates username and password
     function validate() {
-        $query = "SELECT * FROM members WHERE username = ?";        
+        $query = "SELECT * FROM members WHERE username = ?";
         $data = $this->db->query($query, array($this->input->post('username')));
         
         foreach ($data->result_array() as $row){

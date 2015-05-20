@@ -1,49 +1,38 @@
-<script>
-    function addPost() {
-        $(".blog-main").append('<div class="blog-post"><h2 class="blog-post-title"></h2><p                                     class="blog-post-meta"><a href="#"></a></p><p id = "body"></p></div>');
-        var codeBlock = document.getElementById("blog-post");
-        var name = document.getElementById('name');
-        var title = document.getElementById("title");
-        var blog = document.getElementById("blog");
-        $(".blog-post-title").text(title);
-        $("a").text(name);
-        $("#body").text(blog);
-        alert('name');
-
-    }
-</script>
-
-
 <div class="container">
-
+    
     <div class="blog-header">
         <h1 class="blog-title">The Blog</h1>
-        <p class="lead blog-description"> Aenean lacinia bibendum nulla sed consectetu                  </p>
+        <p class="lead blog-description"> Aenean lacinia bibendum nulla sed consectetu</p>
     </div>
 
     <div class="row">
 
         <div class="col-sm-8 blog-main">
             
-            <div class="blog-post">
-                <h2 class="blog-post-title">Title</h2>
-                <p class="blog-post-meta">Date<a href="#">Calvin</a></p>
-                <p id = "body">mollis euismod. Cras mattis consectetur                     purus sitamet fermentum. Aenean lacinia bibendum nulla sed consectetur.mollis euismod. Cras mattis consectetur purus sitamet fermentum. Aenean lacinia bibendum nulla sed consectetur.mollis euismod. Cras mattis consecteturpurus sitamet fermentum. Aenean lacinia bibendum nulla sed consectetur.mollis euismod. Cras mattis consectetur         purus sitamet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-            </div>
+            <?php 
+            
+            //displays blogs and delete buttons if logged in
+            foreach($blogs->result() as $match) {
 
-            <nav>
-                <ul class="pager">
-                    <li><a href="#">Previous</a></li>
-                    <li><a href="#">Next</a></li>
-                </ul>
-            </nav>
+                echo '<div class="blog-post"><h2 class="blog-post-title">' . $match->title . '</h2>';
+                echo '<p class="blog-post-meta">' . $match->timeStamp . '<a href="#">   ' . $match->name;
+                echo '</a></p><p id = "body">' . $match->body . '</p>';
+                if($this->session->userdata('username') === 'admin') { 
+                    echo form_open('blog/delete');
+                    echo form_hidden('id', $match->id);
+                    echo form_submit('submit', 'Delete');
+                    echo form_close("</div>");
+                }
+            
+            }
+            
+            ?>
 
-        </div><!-- /.blog-main -->
-        
+        </div>
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
             <div class="sidebar-module sidebar-module-inset">
                 <h4>About</h4>
-                <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur                     purus sitamet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consecteturpurus sitamet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
             </div>
         <div class="sidebar-module">
             <h4>Archives</h4>
@@ -75,20 +64,20 @@
     </div><!-- /.row -->
 
 </div><!-- /.container -->
-            <div id = "blog_form">
+
+        <!-- admin blog submit form -->
                 <?php 
                 if($this->session->userdata('username') === 'admin') { 
-                    $js = 'onClick = "addPost()"';
+                    echo '<div id = "blog_form">';
+                    echo form_open('blog/post_blog'); 
                     echo form_input('name', 'Name');
                     echo form_input('title', 'Title');
-                    echo form_textarea('blog', 'Blog');
-                    echo form_submit('mysubmit', 'Submit Post!', $js);
-
+                    echo form_textarea('body', 'Body');
+                    echo form_submit('submit', 'Submit Post!') . '</div>';
 
                 } 
                 ?>
-            </div>
-
+        
 
 <footer class="blog-footer">
     <p>Copyright © 2015 

@@ -31,7 +31,7 @@ class Membership_model extends CI_Model {
             'skillOffered' => $this->input->post('skillOffered'),
             'zipcode' => $this->input->post('zipcode'),
             'password' => $hashed
-            );
+        );
         
         $insert = $this->db->insert('members', $new_member_insert_data);
         return $insert;

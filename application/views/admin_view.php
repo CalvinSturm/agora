@@ -1,1 +1,1 @@
-<?php echo anchor('blog', 'Edit Blog'); ?>
+<h2><?php echo anchor('blog', 'Edit Blog'); ?></h2>

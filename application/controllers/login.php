@@ -20,8 +20,7 @@ class Login extends CI_Controller {
         //custom session array accessed globally with $this->session->userdata('arrayKey');
         //whenever a user logs in, their data is retrieved from out DB and saved into their cookies        
         if($query) {
-        
-            print_r($query);
+            
             $data = array(
                 'username' => $query[0]['username'],
                 'skillOffered' => $query[0]['skillOffered'],

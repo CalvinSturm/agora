@@ -67,7 +67,7 @@ class Login extends CI_Controller {
             if($query = $this->membership_model->create_member()) {
                 $data['main_content'] = 'signup_successful';
                 $this->load->view('includes/template', $data);
-                               
+                             
             }
             else {
                 $this->load->view('signup_form');

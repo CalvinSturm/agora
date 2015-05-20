@@ -6,12 +6,11 @@
     </div>
 
     <div class="row">
-
         <div class="col-sm-8 blog-main">
             
             <?php 
             
-            //displays blogs and delete buttons if logged in
+            //displays blog text fields and delete buttons if admin is logged in
             foreach($blogs->result() as $match) {
 
                 echo '<div class="blog-post"><h2 class="blog-post-title">' . $match->title . '</h2>';
@@ -23,12 +22,22 @@
                     echo form_submit('submit', 'Delete');
                     echo form_close("</div>");
                 }
+                else {
+                    echo "</div>";
+                }
             
             }
-            
             ?>
+            
+            <nav>
+                <ul class="pager">
+                    <li><a href="#">Previous</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </nav>
 
         </div>
+        
         <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
             <div class="sidebar-module sidebar-module-inset">
                 <h4>About</h4>
@@ -74,11 +83,10 @@
                     echo form_input('title', 'Title');
                     echo form_textarea('body', 'Body');
                     echo form_submit('submit', 'Submit Post!') . '</div>';
-
+                    
                 } 
                 ?>
         
-
 <footer class="blog-footer">
     <p>Copyright © 2015 
     <p>

@@ -28,3 +28,6 @@
     background: rgba(255,255,255,0.9);
 }
 
+.table table-condensed {
+    width:100px;
+}

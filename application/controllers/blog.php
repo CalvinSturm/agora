@@ -12,7 +12,7 @@ class Blog extends CI_Controller{
         }
 
         $data['main_content'] = 'blog_view';
-        $query = 'SELECT * FROM blog';        
+        $query = 'SELECT * FROM blog ORDER BY id DESC';        
         $data['blogs'] = $this->db->query($query);
         $this->load->view($header);
         $this->load->view('blog_view', $data);

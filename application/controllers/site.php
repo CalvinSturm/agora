@@ -1,7 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Site extends CI_Controller { 
-    //suppose to load members area after logging in
+    //load members area after logging in
     function members_area() {
         $data['main_content'] = 'members_area';
         $this->load->view('includes/template', $data);
@@ -32,6 +32,9 @@ class Site extends CI_Controller {
         
         $query2 = "SELECT * FROM members WHERE skillWanted != ? AND skillOffered = ?";
         $data['matches2'] = $this->db->query($query2, array($offered, $wanted));
+        
+        $query3 = "SELECT * FROM members WHERE skillWanted != ? AND skillOffered != ?";
+        $data['matches3'] = $this->db->query($query3, array($offered, $wanted));
         
         $this->load->view('includes/header');
         $this->load->view('members_area', $data);

@@ -12,11 +12,12 @@
         echo form_input('zipcode', set_value('zipcode', 'Zipcode'));
         echo form_password('password', set_value('password', 'Password'));
         echo form_password('password2', set_value('password2', 'Password confirm')) . br(1);
-
+        echo '<div class="g-recaptcha" data-sitekey="6Lf4Uv4SAAAAABv4yg9WFcrjkG1alioS4oyZtqQ4"></div>';
         echo form_submit('submit', 'Create Account');
 
         validation_errors('<p class = "error"></p>');
 
         ?>
+        
     </div>
 </fieldset>

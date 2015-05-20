@@ -41,8 +41,7 @@ class Blog extends CI_Controller{
         $this->db->delete('blog', array('id' => $id));
         redirect('blog');
         
-    }
-      
+    }     
 }
     
 ?>
